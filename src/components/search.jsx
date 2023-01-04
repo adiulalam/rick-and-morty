@@ -1,7 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const Search = () => {
 	const [showFilter, setShowFilter] = useState(false);
+
+	const [filterObject, setFilterObject] = useState({ name: "", status: "", gender: "" });
+
 	return (
 		<div class="flex flex-row items-center justify-center rounded p-5">
 			<div class="w-full md:w-2/3 shadow p-5 rounded-lg bg-white">
@@ -18,6 +21,8 @@ export const Search = () => {
 					</div>
 
 					<input
+						onChange={(e) => setFilterObject({ ...filterObject, name: e?.target?.value ?? "" })}
+						value={showFilter?.name ?? ""}
 						type="text"
 						placeholder="Search by listing, location, bedroom number..."
 						class="px-8 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
@@ -41,44 +46,25 @@ export const Search = () => {
 				{showFilter && (
 					<div>
 						<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
-							<select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+							<select
+								class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+								onChange={(e) => setFilterObject({ ...filterObject, status: e?.target?.value ?? "" })}
+							>
 								<option value="">Status</option>
-								<option value="for-rent">For Rent</option>
-								<option value="for-sale">For Sale</option>
+								<option value="alive">Alive</option>
+								<option value="dead">Dead</option>
+								<option value="unknown">Unknown</option>
 							</select>
 
-							<select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
+							<select
+								class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+								onChange={(e) => setFilterObject({ ...filterObject, gender: e?.target?.value ?? "" })}
+							>
 								<option value="">Gender</option>
-								<option value="fully-furnished">Fully Furnished</option>
-								<option value="partially-furnished">Partially Furnished</option>
-								<option value="not-furnished">Not Furnished</option>
-							</select>
-
-							<select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-								<option value="">Species</option>
-								<option value="1000">RM 1000</option>
-								<option value="2000">RM 2000</option>
-								<option value="3000">RM 3000</option>
-								<option value="4000">RM 4000</option>
-							</select>
-
-							<select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-								<option value="">Origin Type</option>
-								<option value="200">200 sq.ft</option>
-								<option value="400">400 sq.ft</option>
-								<option value="600">600 sq.ft</option>
-								<option value="800 sq.ft">800</option>
-								<option value="1000 sq.ft">1000</option>
-								<option value="1200 sq.ft">1200</option>
-							</select>
-
-							<select class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm">
-								<option value="">Location Type</option>
-								<option value="1">1 bedroom</option>
-								<option value="2">2 bedrooms</option>
-								<option value="3">3 bedrooms</option>
-								<option value="4">4 bedrooms</option>
-								<option value="5">5 bedrooms</option>
+								<option value="male">Male</option>
+								<option value="female">Female</option>
+								<option value="genderless">Genderless</option>
+								<option value="unknown">Unknown</option>
 							</select>
 						</div>
 					</div>
