@@ -6,6 +6,7 @@ export const Card = (props) => {
 					className="object-cover w-full rounded-t-lg h-96 md:h-full md:w-48 md:rounded-none md:rounded-l-lg"
 					src={props?.image}
 					alt={props?.name}
+					loading="lazy"
 				/>
 				<div className="flex flex-col justify-between p-4 leading-normal w-full md:w-96">
 					<h5 className="mb-2 text-3xl font-bold tracking-tight text-black">{props?.name}</h5>

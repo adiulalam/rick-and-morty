@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const Search = ({ filterObject, setFilterObject }) => {
+export const Search = ({ filterObject, setFilterObject, refetch }) => {
 	const [showFilter, setShowFilter] = useState(false);
 
 	return (
@@ -36,7 +36,10 @@ export const Search = ({ filterObject, setFilterObject }) => {
 					>
 						{showFilter ? "Hide" : "Show"} Filter
 					</button>
-					<button className="px-4 py-2 bg-[#FAF76B] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md">
+					<button
+						className="px-4 py-2 bg-[#FAF76B] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md"
+						onClick={() => refetch()}
+					>
 						Search
 					</button>
 				</div>
