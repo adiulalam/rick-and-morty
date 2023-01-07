@@ -1,17 +1,15 @@
 import { useEffect, useState } from "react";
 
-export const Search = () => {
+export const Search = ({ filterObject, setFilterObject }) => {
 	const [showFilter, setShowFilter] = useState(false);
 
-	const [filterObject, setFilterObject] = useState({ name: "", status: "", gender: "" });
-
 	return (
-		<div class="flex flex-row items-center justify-center rounded p-5">
-			<div class="w-full md:w-2/3 shadow p-5 rounded-lg bg-[#08C952]">
-				<div class="relative">
-					<div class="absolute flex items-center ml-2 h-full">
+		<div className="flex flex-row items-center justify-center rounded p-5">
+			<div className="w-full md:w-2/3 shadow p-5 rounded-lg bg-[#08C952]">
+				<div className="relative">
+					<div className="absolute flex items-center ml-2 h-full">
 						<svg
-							class="w-4 h-4 fill-current text-primary-gray-dark"
+							className="w-4 h-4 fill-current text-primary-gray-dark"
 							viewBox="0 0 16 16"
 							fill="none"
 							xmlns="http://www.w3.org/2000/svg"
@@ -22,32 +20,32 @@ export const Search = () => {
 
 					<input
 						onChange={(e) => setFilterObject({ ...filterObject, name: e?.target?.value ?? "" })}
-						value={showFilter?.name ?? ""}
+						value={filterObject?.name ?? ""}
 						type="text"
 						placeholder="Search by name..."
-						class="px-8 py-3 w-full rounded-md bg-[#FAF76B] border-transparent focus:border-gray-500 focus:bg-[#EDCF6B] focus:ring-0 text-sm"
+						className="px-8 py-3 w-full rounded-md bg-[#FAF76B] border-transparent focus:border-gray-500 focus:bg-[#EDCF6B] focus:ring-0 text-sm"
 					/>
 				</div>
 
-				<div class="flex items-center justify-between mt-4">
-					<p class="font-medium">Filters</p>
+				<div className="flex items-center justify-between mt-4">
+					<p className="font-medium">Filters</p>
 
 					<button
-						class="px-4 py-2 bg-[#FAF76B] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md"
+						className="px-4 py-2 bg-[#FAF76B] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md"
 						onClick={() => (showFilter ? setShowFilter(false) : setShowFilter(true))}
 					>
 						{showFilter ? "Hide" : "Show"} Filter
 					</button>
-					<button class="px-4 py-2 bg-[#FAF76B] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md">
+					<button className="px-4 py-2 bg-[#FAF76B] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md">
 						Search
 					</button>
 				</div>
 
 				{showFilter && (
 					<div>
-						<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
+						<div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
 							<select
-								class="px-4 py-3 w-full rounded-md bg-[#FAF76B] focus:bg-[#EDCF6B] focus:ring-0 text-sm"
+								className="px-4 py-3 w-full rounded-md bg-[#FAF76B] focus:bg-[#EDCF6B] focus:ring-0 text-sm"
 								onChange={(e) => setFilterObject({ ...filterObject, status: e?.target?.value ?? "" })}
 							>
 								<option value="">Status</option>
@@ -57,7 +55,7 @@ export const Search = () => {
 							</select>
 
 							<select
-								class="px-4 py-3 w-full rounded-md bg-[#FAF76B] focus:bg-[#EDCF6B] focus:ring-0 text-sm"
+								className="px-4 py-3 w-full rounded-md bg-[#FAF76B] focus:bg-[#EDCF6B] focus:ring-0 text-sm"
 								onChange={(e) => setFilterObject({ ...filterObject, gender: e?.target?.value ?? "" })}
 							>
 								<option value="">Gender</option>
