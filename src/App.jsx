@@ -18,9 +18,12 @@ export default function App() {
 		>
 			<div className="bg-[#160440]">
 				<Search filterObject={filterObject} setFilterObject={setFilterObject} refetch={refetch} />
-				{characters?.results?.map((character, index) => (
-					<Card {...character} key={index} />
-				))}
+
+				<div className="flex flex-row flex-wrap items-center justify-evenly p-5 gap-5">
+					{characters?.results?.map((character, index) => (
+						<Card {...character} key={index} />
+					))}
+				</div>
 			</div>
 		</InfiniteScroll>
 	);
