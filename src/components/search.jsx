@@ -7,7 +7,7 @@ export const Search = () => {
 
 	return (
 		<div class="flex flex-row items-center justify-center rounded p-5">
-			<div class="w-full md:w-2/3 shadow p-5 rounded-lg bg-white">
+			<div class="w-full md:w-2/3 shadow p-5 rounded-lg bg-[#08C952]">
 				<div class="relative">
 					<div class="absolute flex items-center ml-2 h-full">
 						<svg
@@ -24,8 +24,8 @@ export const Search = () => {
 						onChange={(e) => setFilterObject({ ...filterObject, name: e?.target?.value ?? "" })}
 						value={showFilter?.name ?? ""}
 						type="text"
-						placeholder="Search by listing, location, bedroom number..."
-						class="px-8 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+						placeholder="Search by name..."
+						class="px-8 py-3 w-full rounded-md bg-[#FAF76B] border-transparent focus:border-gray-500 focus:bg-[#EDCF6B] focus:ring-0 text-sm"
 					/>
 				</div>
 
@@ -33,12 +33,12 @@ export const Search = () => {
 					<p class="font-medium">Filters</p>
 
 					<button
-						class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md"
+						class="px-4 py-2 bg-[#FAF76B] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md"
 						onClick={() => (showFilter ? setShowFilter(false) : setShowFilter(true))}
 					>
 						{showFilter ? "Hide" : "Show"} Filter
 					</button>
-					<button class="px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-800 text-sm font-medium rounded-md">
+					<button class="px-4 py-2 bg-[#FAF76B] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md">
 						Search
 					</button>
 				</div>
@@ -47,7 +47,7 @@ export const Search = () => {
 					<div>
 						<div class="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
 							<select
-								class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+								class="px-4 py-3 w-full rounded-md bg-[#FAF76B] focus:bg-[#EDCF6B] focus:ring-0 text-sm"
 								onChange={(e) => setFilterObject({ ...filterObject, status: e?.target?.value ?? "" })}
 							>
 								<option value="">Status</option>
@@ -57,7 +57,7 @@ export const Search = () => {
 							</select>
 
 							<select
-								class="px-4 py-3 w-full rounded-md bg-gray-100 border-transparent focus:border-gray-500 focus:bg-white focus:ring-0 text-sm"
+								class="px-4 py-3 w-full rounded-md bg-[#FAF76B] focus:bg-[#EDCF6B] focus:ring-0 text-sm"
 								onChange={(e) => setFilterObject({ ...filterObject, gender: e?.target?.value ?? "" })}
 							>
 								<option value="">Gender</option>
