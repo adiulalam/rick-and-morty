@@ -46,7 +46,7 @@ export default function App() {
 				</div>
 			}
 		>
-			<div className="bg-[#160440]">
+			<div className="bg-[#160440] min-w-[320px]">
 				<Search filterObject={filterObject} setFilterObject={setFilterObject} refetch={refetch} />
 
 				<div className="flex flex-row flex-wrap items-center justify-evenly p-5 gap-5">
