@@ -1,6 +1,7 @@
+import "./animation.scss";
 export const Card = (props) => {
 	return (
-		<div className="flex flex-col md:h-72 justify-around min-w-full md:min-w-min border rounded-lg shadow-md md:flex-row md:max-w-xl bg-[#08C952]">
+		<div className="cardAnimation flex flex-col md:h-72 justify-around min-w-full md:min-w-min border rounded-lg shadow-md md:flex-row md:max-w-xl bg-[#08C952]">
 			<img
 				className="object-cover w-full rounded-t-lg h-96 md:h-full md:w-64 md:rounded-none md:rounded-l-lg"
 				src={props?.image}
