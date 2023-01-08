@@ -14,7 +14,7 @@ export const CardSkeleton = ({ array }) => {
 						<Skeleton className="mb-2 text-3xl font-bold tracking-tight bg-black" />
 						<Skeleton className="mb-2 text-lg tracking-tight bg-black" />
 						<div>
-							<h2 className="font-medium text-gray-800">Origin:</h2>
+							<Skeleton className="w-1/2 pb-2 bg-black" />
 							<div className="flex flex-row items-center justify-between mb-2 gap-2">
 								<h3 className="text-sm tracking-tight text-black">
 									<Skeleton className="px-8 w-full rounded-md bg-black" />
@@ -29,7 +29,7 @@ export const CardSkeleton = ({ array }) => {
 						</div>
 
 						<div>
-							<h2 className="font-medium text-gray-800">Last Known Location:</h2>
+							<Skeleton className="w-1/2 pb-2 bg-black" />
 							<div className="flex flex-row items-center justify-between mb-2 gap-2">
 								<h3 className="text-sm tracking-tight text-black">
 									<Skeleton className="px-8 w-full rounded-md bg-black" />
