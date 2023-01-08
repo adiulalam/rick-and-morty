@@ -20,6 +20,7 @@ export const Search = ({ filterObject, setFilterObject, refetch, isLoading }) =>
 
 					<input
 						onChange={(e) => setFilterObject({ ...filterObject, name: e?.target?.value ?? "" })}
+						onKeyDown={(e) => e.key === "Enter" && refetch()}
 						value={filterObject?.name ?? ""}
 						type="text"
 						placeholder="Search by character name..."
