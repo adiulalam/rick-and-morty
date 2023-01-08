@@ -32,7 +32,11 @@ export const Search = ({ filterObject, setFilterObject, refetch, isLoading }) =>
 					<p className="font-medium">Filters</p>
 
 					<button
-						className="flex items-center justify-center px-4 py-2 bg-[#d2e054] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md"
+						className={`${
+							filterObject?.status || filterObject?.gender
+								? "cursor-not-allowed"
+								: "transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 "
+						} flex items-center justify-center px-4 py-2 bg-[#d2e054] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md`}
 						onClick={() => (showFilter ? setShowFilter(false) : setShowFilter(true))}
 						disabled={filterObject?.status || filterObject?.gender}
 					>
@@ -49,7 +53,7 @@ export const Search = ({ filterObject, setFilterObject, refetch, isLoading }) =>
 									showFilter || filterObject?.status || filterObject?.gender ? "rotate-180" : ""
 								} ${
 									filterObject?.status || filterObject?.gender ? "text-violet-900" : "text-violet-500"
-								} `}
+								}`}
 								fill="none"
 								strokeLinecap="round"
 								strokeLinejoin="round"
@@ -62,7 +66,7 @@ export const Search = ({ filterObject, setFilterObject, refetch, isLoading }) =>
 						</div>
 					</button>
 					<button
-						className="flex px-4 py-2 bg-[#d2e054] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md"
+						className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 flex px-4 py-2 bg-[#d2e054] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md"
 						onClick={() => refetch()}
 					>
 						{isLoading && (
@@ -94,7 +98,7 @@ export const Search = ({ filterObject, setFilterObject, refetch, isLoading }) =>
 					<div>
 						<div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
 							<select
-								className="px-4 py-3 w-full rounded-md bg-[#d2e054] focus:bg-[#EDCF6B] focus:ring-0 text-sm"
+								className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 px-4 py-3 w-full rounded-md bg-[#d2e054] focus:bg-[#EDCF6B] focus:ring-0 text-sm"
 								onChange={(e) => setFilterObject({ ...filterObject, status: e?.target?.value ?? "" })}
 								value={filterObject?.status}
 							>
@@ -107,7 +111,7 @@ export const Search = ({ filterObject, setFilterObject, refetch, isLoading }) =>
 							</select>
 
 							<select
-								className="px-4 py-3 w-full rounded-md bg-[#d2e054] focus:bg-[#EDCF6B] focus:ring-0 text-sm"
+								className="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 px-4 py-3 w-full rounded-md bg-[#d2e054] focus:bg-[#EDCF6B] focus:ring-0 text-sm"
 								onChange={(e) => setFilterObject({ ...filterObject, gender: e?.target?.value ?? "" })}
 								value={filterObject?.gender}
 							>
