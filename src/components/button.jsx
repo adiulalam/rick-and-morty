@@ -44,7 +44,7 @@ export const Button = ({
 				>
 					<svg
 						className={`${showFilter || filterObject?.status || filterObject?.gender ? "rotate-180" : ""} ${
-							filterObject?.status || filterObject?.gender ? "text-violet-900" : "text-violet-500"
+							filterObject?.status || filterObject?.gender ? "text-[#28c765]" : "text-[#08C952]"
 						}`}
 						fill="none"
 						strokeLinecap="round"
