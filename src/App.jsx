@@ -26,18 +26,27 @@ export default function App() {
 		);
 	}
 
-	if (!isLoading && isRefetching) {
+	if ((!isLoading && isRefetching) || characters.error) {
 		return (
-			<div className="bg-[#160440] min-w-[320px]">
-				<Search filterObject={filterObject} setFilterObject={setFilterObject} refetch={refetch} />
-				<CardSkeleton array={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
+			<div className="bg-[#160440] min-w-[320px] h-screen">
+				<Search
+					filterObject={filterObject}
+					setFilterObject={setFilterObject}
+					refetch={refetch}
+					isLoading={!isLoading && isRefetching}
+				/>
+				{characters.error ? (
+					<Error hideWrapper={true} message={characters.error} />
+				) : (
+					<CardSkeleton array={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
+				)}
 			</div>
 		);
 	}
 
 	return (
 		<InfiniteScroll
-			dataLength={characters ? characters.results.length : 0}
+			dataLength={characters.results ? characters?.results?.length : 0}
 			next={() => fetchNextPage()}
 			hasMore={!!hasNextPage}
 			loader={

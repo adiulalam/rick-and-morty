@@ -10,10 +10,10 @@ export const useCharacter = ({ name, status, gender }) => {
 			).then((res) => res.json()),
 		{
 			getNextPageParam: (lastPage) => {
-				const previousPage = lastPage.info.prev ? +lastPage.info.prev.split("=")[1] : 0;
+				const previousPage = lastPage?.info?.prev ? +lastPage?.info?.prev?.split("=")[1] : 0;
 				const currentPage = previousPage + 1;
 
-				if (currentPage === lastPage.info.pages) return false;
+				if (currentPage === lastPage?.info?.pages) return false;
 				return currentPage + 1;
 			},
 			refetchOnWindowFocus: false,
@@ -22,12 +22,10 @@ export const useCharacter = ({ name, status, gender }) => {
 
 	const characters = useMemo(
 		() =>
-			data?.pages.reduce((prev, page) => {
-				return {
-					info: page.info,
-					results: [...prev.results, ...page.results],
-				};
-			}),
+			data?.pages.reduce((prev, page) => ({
+				info: page.info,
+				results: [...prev?.results, ...page?.results],
+			})),
 		[data]
 	);
 
