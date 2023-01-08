@@ -31,10 +31,34 @@ export const Search = ({ filterObject, setFilterObject, refetch }) => {
 					<p className="font-medium">Filters</p>
 
 					<button
-						className="px-4 py-2 bg-[#d2e054] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md"
+						className="flex items-center justify-center px-4 py-2 bg-[#d2e054] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md"
 						onClick={() => (showFilter ? setShowFilter(false) : setShowFilter(true))}
+						disabled={filterObject?.status || filterObject?.gender}
 					>
 						{showFilter || filterObject?.status || filterObject?.gender ? "Hide" : "Show"} Filter
+						<div
+							className={`${
+								filterObject?.status || filterObject?.gender
+									? "bg-slate-500"
+									: "animate-bounce bg-slate-800"
+							} ml-2 p-1 w-5 h-5 ring-1 ring-slate-200/20 shadow-lg rounded-full flex items-center justify-center`}
+						>
+							<svg
+								class={`${
+									showFilter || filterObject?.status || filterObject?.gender ? "rotate-180" : ""
+								} ${
+									filterObject?.status || filterObject?.gender ? "text-violet-900" : "text-violet-500"
+								} `}
+								fill="none"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								viewBox="0 0 24 24"
+								stroke="currentColor"
+							>
+								<path d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+							</svg>
+						</div>
 					</button>
 					<button
 						className="px-4 py-2 bg-[#d2e054] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md"
