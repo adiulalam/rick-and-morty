@@ -2,7 +2,9 @@ import "./error.scss";
 export const Error = () => {
 	return (
 		<div className="background-img">
-			<div className="space"></div>
+			<div className="loader-wrapper">
+				<div className="loader"></div>
+			</div>
 			<div className="wrapper">
 				<div className="img-wrapper">
 					<span>44</span>
