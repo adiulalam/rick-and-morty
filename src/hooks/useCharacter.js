@@ -2,7 +2,7 @@ import { useMemo } from "react";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 export const useCharacter = ({ name, status, gender }) => {
-	const { data, error, fetchNextPage, hasNextPage, refetch, isLoading } = useInfiniteQuery(
+	const { data, error, fetchNextPage, hasNextPage, refetch, isLoading, isRefetching } = useInfiniteQuery(
 		["characters"],
 		({ pageParam = 1 }) =>
 			fetch(
@@ -16,6 +16,7 @@ export const useCharacter = ({ name, status, gender }) => {
 				if (currentPage === lastPage.info.pages) return false;
 				return currentPage + 1;
 			},
+			refetchOnWindowFocus: false,
 		}
 	);
 
@@ -38,5 +39,6 @@ export const useCharacter = ({ name, status, gender }) => {
 		data,
 		refetch,
 		isLoading,
+		isRefetching,
 	};
 };

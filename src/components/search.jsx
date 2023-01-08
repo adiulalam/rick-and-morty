@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 export const Search = ({ filterObject, setFilterObject, refetch }) => {
 	const [showFilter, setShowFilter] = useState(false);
@@ -22,8 +22,8 @@ export const Search = ({ filterObject, setFilterObject, refetch }) => {
 						onChange={(e) => setFilterObject({ ...filterObject, name: e?.target?.value ?? "" })}
 						value={filterObject?.name ?? ""}
 						type="text"
-						placeholder="Search by name..."
-						className="px-8 py-3 w-full rounded-md bg-[#FAF76B] border-transparent focus:border-gray-500 focus:bg-[#EDCF6B] focus:ring-0 text-sm"
+						placeholder="Search by character name..."
+						className="px-8 py-3 w-full rounded-md bg-[#d2e054] border-transparent focus:border-gray-400 placeholder-gray-500 focus:bg-[#EDCF6B] focus:ring-0 text-sm"
 					/>
 				</div>
 
@@ -31,37 +31,43 @@ export const Search = ({ filterObject, setFilterObject, refetch }) => {
 					<p className="font-medium">Filters</p>
 
 					<button
-						className="px-4 py-2 bg-[#FAF76B] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md"
+						className="px-4 py-2 bg-[#d2e054] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md"
 						onClick={() => (showFilter ? setShowFilter(false) : setShowFilter(true))}
 					>
-						{showFilter ? "Hide" : "Show"} Filter
+						{showFilter || filterObject?.status || filterObject?.gender ? "Hide" : "Show"} Filter
 					</button>
 					<button
-						className="px-4 py-2 bg-[#FAF76B] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md"
+						className="px-4 py-2 bg-[#d2e054] hover:bg-[#EDCF6B] text-gray-800 text-sm font-medium rounded-md"
 						onClick={() => refetch()}
 					>
 						Search
 					</button>
 				</div>
 
-				{showFilter && (
+				{(showFilter || filterObject?.status || filterObject?.gender) && (
 					<div>
 						<div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4 mt-4">
 							<select
-								className="px-4 py-3 w-full rounded-md bg-[#FAF76B] focus:bg-[#EDCF6B] focus:ring-0 text-sm"
+								className="px-4 py-3 w-full rounded-md bg-[#d2e054] focus:bg-[#EDCF6B] focus:ring-0 text-sm"
 								onChange={(e) => setFilterObject({ ...filterObject, status: e?.target?.value ?? "" })}
+								value={filterObject?.status}
 							>
-								<option value="">Status</option>
+								<option className="font-bold" value="">
+									Status
+								</option>
 								<option value="alive">Alive</option>
 								<option value="dead">Dead</option>
 								<option value="unknown">Unknown</option>
 							</select>
 
 							<select
-								className="px-4 py-3 w-full rounded-md bg-[#FAF76B] focus:bg-[#EDCF6B] focus:ring-0 text-sm"
+								className="px-4 py-3 w-full rounded-md bg-[#d2e054] focus:bg-[#EDCF6B] focus:ring-0 text-sm"
 								onChange={(e) => setFilterObject({ ...filterObject, gender: e?.target?.value ?? "" })}
+								value={filterObject?.gender}
 							>
-								<option value="">Gender</option>
+								<option className="font-bold" value="">
+									Gender
+								</option>
 								<option value="male">Male</option>
 								<option value="female">Female</option>
 								<option value="genderless">Genderless</option>

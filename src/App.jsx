@@ -3,18 +3,48 @@ import { Search } from "./components/search";
 import { useState } from "react";
 import { useCharacter } from "./hooks/useCharacter";
 import InfiniteScroll from "react-infinite-scroll-component";
+import { SearchSkeleton } from "./components/searchSkeleton";
+import { CardSkeleton } from "./components/cardSkeleton";
+import { Error } from "./pages/error";
 
 export default function App() {
 	const [filterObject, setFilterObject] = useState({ name: "", status: "", gender: "" });
 
-	const { characters, error, fetchNextPage, hasNextPage, refetch, isLoading } = useCharacter(filterObject);
+	const { characters, error, fetchNextPage, hasNextPage, refetch, isLoading, isRefetching } =
+		useCharacter(filterObject);
+
+	if (error) {
+		return <Error />;
+	}
+
+	if (isLoading) {
+		return (
+			<div className="bg-[#160440]">
+				<SearchSkeleton />
+				<CardSkeleton array={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
+			</div>
+		);
+	}
+
+	if (!isLoading && isRefetching) {
+		return (
+			<div className="bg-[#160440]">
+				<Search filterObject={filterObject} setFilterObject={setFilterObject} refetch={refetch} />
+				<CardSkeleton array={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
+			</div>
+		);
+	}
 
 	return (
 		<InfiniteScroll
 			dataLength={characters ? characters.results.length : 0}
 			next={() => fetchNextPage()}
 			hasMore={!!hasNextPage}
-			// loader={<Loading />}
+			loader={
+				<div className="bg-[#160440] overflow-hidden">
+					<CardSkeleton array={[1, 2, 3]} />
+				</div>
+			}
 		>
 			<div className="bg-[#160440]">
 				<Search filterObject={filterObject} setFilterObject={setFilterObject} refetch={refetch} />
