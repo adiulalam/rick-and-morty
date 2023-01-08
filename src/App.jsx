@@ -19,7 +19,7 @@ export default function App() {
 
 	if (isLoading) {
 		return (
-			<div className="bg-[#160440]">
+			<div className="bg-[#160440] min-w-[320px]">
 				<SearchSkeleton />
 				<CardSkeleton array={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
 			</div>
@@ -28,7 +28,7 @@ export default function App() {
 
 	if (!isLoading && isRefetching) {
 		return (
-			<div className="bg-[#160440]">
+			<div className="bg-[#160440] min-w-[320px]">
 				<Search filterObject={filterObject} setFilterObject={setFilterObject} refetch={refetch} />
 				<CardSkeleton array={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
 			</div>
@@ -41,7 +41,7 @@ export default function App() {
 			next={() => fetchNextPage()}
 			hasMore={!!hasNextPage}
 			loader={
-				<div className="bg-[#160440] overflow-hidden">
+				<div className="bg-[#160440] min-w-[320px] overflow-hidden">
 					<CardSkeleton array={[1, 2, 3]} />
 				</div>
 			}
