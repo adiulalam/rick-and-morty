@@ -27,7 +27,7 @@ export const Search = ({ filterObject, setFilterObject, refetch, isLoading }) =>
 						customCSS={
 							filterObject?.status || filterObject?.gender
 								? "cursor-not-allowed"
-								: "transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 "
+								: "transition ease-in-out delay-150 md:hover:-translate-y-1 md:hover:scale-110 duration-300 "
 						}
 						showFilter={showFilter}
 					/>
@@ -39,7 +39,7 @@ export const Search = ({ filterObject, setFilterObject, refetch, isLoading }) =>
 						disabled={isLoading}
 						customCSS={`${
 							isLoading ? "cursor-not-allowed" : ""
-						} transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300`}
+						} transition ease-in-out delay-150 md:hover:-translate-y-1 md:hover:scale-110 duration-300`}
 					/>
 				</div>
 
