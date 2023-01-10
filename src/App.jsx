@@ -10,33 +10,35 @@ import { Error } from "./pages/error";
 export default function App() {
 	const [filterObject, setFilterObject] = useState({ name: "", status: "", gender: "" });
 
-	const { characters, error, fetchNextPage, hasNextPage, refetch, isLoading, isRefetching } =
+	const { characters, error, fetchNextPage, hasNextPage, refetch, isLoading, isRefetching, isError } =
 		useCharacter(filterObject);
 
-	if (error) {
+	if (error && !isError.error) {
 		return <Error />;
 	}
 
 	if (isLoading) {
 		return (
-			<div className="bg-[#160440] min-w-[320px]">
+			<div className="bg-[#160440] min-w-[320px] ">
 				<SearchSkeleton />
 				<CardSkeleton array={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
 			</div>
 		);
 	}
 
-	if ((!isLoading && isRefetching) || characters?.error) {
+	if ((!isLoading && isRefetching) || characters.error || isError.error) {
 		return (
-			<div className="bg-[#160440] min-w-[320px] h-screen">
+			<div className="bg-[#160440] min-w-[320px]">
 				<Search
 					filterObject={filterObject}
 					setFilterObject={setFilterObject}
 					refetch={refetch}
 					isLoading={!isLoading && isRefetching}
 				/>
-				{characters.error ? (
-					<Error hideWrapper={true} message={characters?.error} />
+				{characters.error || isError.error ? (
+					<div className="bg-[#160440] min-w-[320px] h-screen">
+						<Error hideWrapper={true} message={characters.error ?? isError.message} />
+					</div>
 				) : (
 					<CardSkeleton array={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
 				)}
