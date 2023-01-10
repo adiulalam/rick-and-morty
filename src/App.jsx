@@ -26,7 +26,7 @@ export default function App() {
 		);
 	}
 
-	if ((!isLoading && isRefetching) || characters.error) {
+	if ((!isLoading && isRefetching) || characters?.error) {
 		return (
 			<div className="bg-[#160440] min-w-[320px] h-screen">
 				<Search
@@ -36,7 +36,7 @@ export default function App() {
 					isLoading={!isLoading && isRefetching}
 				/>
 				{characters.error ? (
-					<Error hideWrapper={true} message={characters.error} />
+					<Error hideWrapper={true} message={characters?.error} />
 				) : (
 					<CardSkeleton array={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
 				)}

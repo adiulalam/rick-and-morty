@@ -22,8 +22,8 @@ export const useCharacter = ({ name, status, gender }) => {
 
 	const characters = useMemo(
 		() =>
-			data?.pages.reduce((prev, page) => ({
-				info: page.info,
+			data?.pages?.reduce((prev, page) => ({
+				info: page?.info,
 				results: [...prev?.results, ...page?.results],
 			})),
 		[data]
