@@ -14,11 +14,11 @@ export const useCharacter = ({ name, status, gender }) => {
 					return response.json();
 				} else if (response.status === 404) {
 					Promise.reject("error 404");
-					setIsError({ error: true, message: "error 404" });
+					setIsError({ error: true, message: "Error 404" });
 					return isError;
 				} else {
 					setIsError({ error: true, message: `some other error: ${response?.status}` });
-					Promise.reject("some other error: " + response.status);
+					Promise.reject("Some other error: " + response.status);
 					return isError;
 				}
 			}),

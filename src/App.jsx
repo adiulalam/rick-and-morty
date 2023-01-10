@@ -37,7 +37,7 @@ export default function App() {
 				/>
 				{characters.error || isError.error ? (
 					<div className="bg-[#160440] min-w-[320px] h-screen">
-						<Error hideWrapper={true} message={characters.error ?? isError.message} />
+						<Error hideWrapper={true} message={isError.message ?? characters.error} />
 					</div>
 				) : (
 					<CardSkeleton array={[1, 2, 3, 4, 5, 6, 7, 8, 9]} />
