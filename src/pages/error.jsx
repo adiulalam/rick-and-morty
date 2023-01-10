@@ -1,6 +1,5 @@
 import "./error.scss";
 export const Error = ({ hideWrapper, message }) => {
-	console.log("🚀 ~ file: error.jsx:3 ~ Error ~ message", message);
 	return (
 		<div className="background-img">
 			{!hideWrapper && (
