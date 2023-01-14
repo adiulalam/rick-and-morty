@@ -17,4 +17,4 @@ jobs:
         key: ${{ secrets.DOCKER_SSH_PRIVATE_KEY }}
         script: |
           cd rick-and-morty-content/
-          ./deploy-rick-and-morty-content.sh
+          ./deploy-rick-and-morty.sh
